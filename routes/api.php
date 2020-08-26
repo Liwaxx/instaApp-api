@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('register', 'AuthController@register');
+Route::post('login', 'AuthController@login');
+
+Route::middleware('auth:api')->group(function(){
+    Route::get('feeds', 'SocialController@feeds');
+    Route::post('upload/{id}', 'SocialController@upload');
+    Route::post('like/{id}', 'SocialController@like');
+    Route::post('comment/{id}', 'SocialController@comment');
 });

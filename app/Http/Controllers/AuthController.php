@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Helper\responses;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -23,7 +24,8 @@ class AuthController extends Controller
                 'name' => $nama,
                 'email' => $email,
                 'password' => bcrypt($password),
-                'role' => $role
+                'role' => $role,
+                'api_token' => Str::random(50)
             ]);
 
             if($data->save()){
