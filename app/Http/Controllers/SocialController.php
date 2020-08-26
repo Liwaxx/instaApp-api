@@ -29,6 +29,26 @@ class SocialController extends Controller
         return $response->responseMessage('Berhasil Upload');
     }
 
+    public function edit(Request $req, $id)
+    {
+        $posts = Posts::find($id);
+        $posts->id_user = $id;
+        $posts->caption = $req->caption;
+        $posts->save();
+
+        $response = new responses;
+        return $response->responseMessage('Berhasil Edit');
+    }
+
+    public function delete($id)
+    {
+        $posts = Posts::find($id);
+        $posts->delete();
+
+        $response = new responses;
+        return $response->responseMessage('Berhasil Hapus Post');
+    }
+
     public function like($id)
     {
         $likes = new Likes;
