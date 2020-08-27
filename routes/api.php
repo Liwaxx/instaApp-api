@@ -19,9 +19,13 @@ Route::post('login', 'AuthController@login');
 
 Route::middleware('auth:api')->group(function(){
     Route::get('feeds', 'SocialController@feeds');
+    Route::get('my-posts/{id}','SocialController@myPosts');
+    Route::get('dash-comments/{id}', 'SocialController@CommentDash');
+
     Route::post('upload/{id}', 'SocialController@upload');
     Route::get('delete/{id}', 'SocialController@delete');
     Route::post('edit/{id}', 'SocialController@edit');
-    Route::post('like/{id}', 'SocialController@like');
+    Route::post('like', 'SocialController@like');
+    Route::get('un-like/{id}', 'SocialController@unlike');
     Route::post('comment/{id}', 'SocialController@comment');
 });

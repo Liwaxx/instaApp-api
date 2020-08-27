@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function register(Request $request) {
         $helper = new responses();
 
-        $nama = $request->nama;
+        $nama = $request->name;
         $email = $request->email;
         $password = $request->password;
         $role = 'user';
